@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .sortorder:after {
+        content: "\25b2";
+      }
+      .sortorder.reverse:after {
+        content: "\25bc";
+      }
+      .sortorder.rev:after {
+        content: "\25bc";
+      }
+    </style>
+  </head>
+  <body ng-app="myApp">
+    <ng-view></ng-view>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/models/factory.js"></script>
+    <script src="./scripts/controllers/controller.js"></script>
+  </body>
+</html>

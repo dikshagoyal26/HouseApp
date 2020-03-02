@@ -1,0 +1,124 @@
+<div ng-controller="houseCtrl" class="container">
+  <div class="row">
+    <div class="col-md-6 text-center my-5">
+      <h1>House List</h1>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control-plaintext"
+            placeholder="Type to Search"
+            ng-model="search"
+          />
+        </div>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+              <button ng-click="sortBy('name')">Name</button>
+              <span
+                class="sortorder"
+                ng-show="propertyName === 'name'"
+                ng-class="{reverse: reverse}"
+              ></span>
+            </th>
+            <th scope="col">
+              <button ng-click="sortBy('id')">Id</button>
+              <span
+                class="sortorder"
+                ng-show="propertyName === 'id'"
+                ng-class="{reverse: reverse}"
+              ></span>
+            </th>
+            <th scope="col">
+              <button ng-click="sortBy('size')">Size</button>
+              <span
+                class="sortorder"
+                ng-show="propertyName === 'size'"
+                ng-class="{reverse: reverse}"
+              ></span>
+            </th>
+            <th scope="col">Status</th>
+          </tr>
+          <tr
+            ng-repeat="house in houses| filter:search | orderBy:propertyName:reverse"
+          >
+            <th>{{$index+1}}</th>
+            <th>{{house.name}}</th>
+            <th>{{house.id}}</th>
+            <th>{{house.size}}</th>
+            <th>
+              <button class="btn btn-success" ng-click="occupy($index,house)">
+                Occupy
+              </button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-6 text-center my-5">
+      <h1>Occupied Houses</h1>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control-plaintext"
+            placeholder="Type to Search"
+            ng-model="searchoccupied"
+          />
+        </div>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+              <button ng-click="sortOccupy('name')">Name</button>
+              <span
+                class="sortorder"
+                ng-show="occupypropertyName === 'name'"
+                ng-class="{rev: rev}"
+              ></span>
+            </th>
+            <th scope="col">
+              <button ng-click="sortOccupy('id')">Id</button>
+              <span
+                class="sortorder"
+                ng-show="occupypropertyName === 'id'"
+                ng-class="{rev: rev}"
+              ></span>
+            </th>
+            <th scope="col">
+              <button ng-click="sortOccupy('size')">Size</button>
+              <span
+                class="sortorder"
+                ng-show="occupypropertyName === 'size'"
+                ng-class="{rev: rev}"
+              ></span>
+            </th>
+            <th scope="col">Status</th>
+          </tr>
+          <tr
+            ng-repeat="house in occupied| filter:searchoccupied | orderBy:occupypropertyName:rev"
+          >
+            <th>{{$index+1}}</th>
+            <th>{{house.name}}</th>
+            <th>{{house.id}}</th>
+            <th>{{house.size}}</th>
+            <th>
+              <button class="btn btn-danger" ng-click="unoccupy($index,house)">
+                Unoccupy
+              </button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

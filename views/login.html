@@ -1,0 +1,23 @@
+<div class="container" ng-controller="loginCtrl">
+  <h1 class="text-center mx-5 my-5">Login</h1>
+  <div class="row">
+    <div class="offset-md-4  col-md-4 col-sm-6 col-xs-12 card p-2 my-2 ">
+      <form ng-submit="submitform(f1.$valid)" name="f1" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter username"
+            name="username"
+            ng-model="username"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
